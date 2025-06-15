@@ -1,5 +1,5 @@
 chrome.storage.local.set({ 'TikTokDownload': true }, function () {
-    console.log('Settings saved');
+    console.log('Backgroud settings saved');
 });
 
 chrome.webRequest.onCompleted.addListener(processRequest, {
