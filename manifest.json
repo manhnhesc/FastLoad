@@ -51,8 +51,7 @@
         {
             "all_frames": true,
             "js": [
-                "inject.js",
-                "popup/popup.js"
+                "inject.js"               
             ],
             "matches": [
                 "*://tiktok.com/*",
