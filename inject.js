@@ -8,19 +8,14 @@ window.fetch = async (...i) => {
     const windowFetchResult = await windowFetchPromise, cloneFetch = windowFetchResult.clone();
     try {
         await port.postMessage({ localstorage: "TikTokDownload" });
-        await port.onMessage.addListener(async tiktokDownloadResponse => {
+        port.onMessage.addListener(async (tiktokDownloadResponse) => {
             if (tiktokDownloadResponse.TikTokDownload) {
                 if (windowFetchResult.ok && ((contentType = windowFetchResult.headers.get("Content-Type")) != null && contentType.includes("application/json"))) {
                     if (windowFetchResult.url.indexOf('https://www.tiktok.com/api/post/item_list') !== -1) {
-                        try {
-                            const cloneFetchJson = await cloneFetch.json();
-
-                            console.log("Data event sending")
-                            const dispatchEvent = new CustomEvent('DataEvent', { detail: cloneFetchJson });
-                            window.dispatchEvent(dispatchEvent)
-                        } catch (e) {
-                            console.log(e)
-                        }
+                        const cloneFetchJson = await cloneFetch.json();
+                        console.log("Data event sending")
+                        const dispatchEvent = new CustomEvent('DataEvent', { detail: cloneFetchJson });
+                        window.dispatchEvent(dispatchEvent)
                     } else {
                         console.log(windowFetchResult.url)
                     }
