@@ -1,4 +1,4 @@
-chrome.storage.local.set({ 'TikTokDownload': true }, function () {
+chrome.storage.local.set({ 'TikTokDownload': false }, function () {
     console.log('Backgroud settings saved');
 });
 
