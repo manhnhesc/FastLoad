@@ -1,0 +1,65 @@
+{
+    "manifest_version": 3,
+    "name": "TikTok Download Extension",
+    "description": "A minimal example of a chrome extension using manifest v3",
+    "version": "0.0.1",
+    "icons": {
+        "16": "assets/logo-16.png",
+        "48": "assets/logo-48.png",
+        "128": "assets/logo-128.png"
+    },
+    "options_page": "settings/option.html",
+    "action": {
+        "default_title": "TikTok Downloader",
+        "default_popup": "popup/popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "externally_connectable": {
+        "ids": [
+            "*"
+        ],
+        "matches": [
+            "*://*/*"
+        ],
+        "accepts_tls_channel_id": false
+    },
+    "permissions": [
+        "tabs",
+        "scripting",
+        "activeTab",
+        "storage",
+        "downloads",
+        "webRequest"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self';"
+    },
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "foreground.js"
+            ]
+        },
+        {
+            "all_frames": true,
+            "js": [
+                "inject.js"
+            ],
+            "matches": [
+                "*://tiktok.com/*",
+                "*://www.tiktok.com/*",
+                "https://www.tiktok.com/*"
+            ],
+            "run_at": "document_start",
+            "world": "MAIN"
+        }
+    ]
+}
