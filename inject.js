@@ -14,6 +14,7 @@ window.fetch = async (...i) => {
                     await port.postMessage({ localstorage: "TikTokDownload" });
                     await port.onMessage.addListener(tiktokDownloadResponse => {
                         if (tiktokDownloadResponse.TikTokDownload) {
+                            console.log("Data event sending")
                             const dispatchEvent = new CustomEvent('DataEvent', { detail: cloneFetchJson });
                             window.dispatchEvent(dispatchEvent)
                         }

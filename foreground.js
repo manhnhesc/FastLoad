@@ -18,7 +18,7 @@ var listVideoIds = [];
 window.addEventListener('DataEvent', (e) => {
     var data = e.detail;
     console.log('Content script');
-    console.log('Received', data.itemList);
+    console.log('Data event received', data.itemList);
     data.itemList.forEach(element => {
         if (listVideoIds.filter(s => s == element.id)[0] == undefined) {
             if (element.video.playAddr && element.video.format != undefined) {
