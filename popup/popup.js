@@ -13,5 +13,5 @@ mySwitch.addEventListener("click", function () {
 })
 
 var localStorage = chrome.storage.local.get("TikTokDownload");
-if (request.localstorage === "TikTokDownload")
+if (localStorage != undefined)
     mySwitch.checked = localStorage.TikTokDownload;
