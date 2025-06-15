@@ -61,5 +61,16 @@
             "run_at": "document_start",
             "world": "MAIN"
         }
+    ],
+    "web_accessible_resources": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "resources": [
+                "popup/popup.js"
+            ],
+            "use_dynamic_url": false
+        }
     ]
 }
