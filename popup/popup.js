@@ -11,3 +11,7 @@ mySwitch.addEventListener("click", function () {
         });
     }
 })
+
+var localStorage = await chrome.storage.local.get("TikTokDownload");
+if (request.localstorage === "TikTokDownload")
+    mySwitch.checked = localStorage.TikTokDownload;
