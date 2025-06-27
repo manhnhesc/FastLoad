@@ -1,6 +1,11 @@
-chrome.storage.local.set({ 'TikTokDownload': false }, function () {
-    console.log('Backgroud settings saved');
-});
+var localStorage = chrome.storage.local.get("TikTokDownload");
+if (localStorage != undefined)
+    mySwitch.checked = localStorage.TikTokDownload;
+else {
+    chrome.storage.local.set({ 'TikTokDownload': true }, function () {
+        console.log('Backgroud settings saved');
+    });
+}
 
 chrome.webRequest.onCompleted.addListener(processRequest, {
     urls: ["*://www.tiktok.com/api/post/item_list/*"],

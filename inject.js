@@ -1,4 +1,4 @@
-const editorExtensionId = 'pffkfjfjdklhlkdpjmjhgpggaecjemdm';
+const editorExtensionId = chrome.runtime.id;
 var port = chrome.runtime.connect(editorExtensionId, { name: "TikTokConnect" });
 const windowFetch = window.fetch;
 window.fetch = async (...i) => {
