@@ -1,7 +1,5 @@
 var localStorage = chrome.storage.local.get("TikTokDownload");
-if (localStorage != undefined)
-    mySwitch.checked = localStorage.TikTokDownload;
-else {
+if (localStorage == undefined || localStorage == null) {
     chrome.storage.local.set({ 'TikTokDownload': true }, function () {
         console.log('Backgroud settings saved');
     });
